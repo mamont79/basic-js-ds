@@ -45,18 +45,52 @@ class BinarySearchTree {
         return newPoint;
     }
 
-    has(data) {
 
+
+    // has tree element or not
+
+    has(data) {
+        return this.hasData(this.way, data);
     }
+    hasData(wayNode, data) {
+        if (!wayNode) {
+            return false;
+        } else if (wayNode.data == data) {
+            return true;
+        } else if (data < wayNode.data) {
+            return this.hasData(wayNode.left, data);
+        } else if (data > wayNode.data) {
+            return this.hasData(wayNode.right, data);
+        }
+    }
+
+
 
     find(data) {
-
+        return this.findElem(this.way, data)
     }
 
+    findElem(wayNode, data) {
+        if (!wayNode) {
+            return null;
+        } else if (data == wayNode.data) {
+            return wayNode;
+        } else if (data < wayNode.data) {
+            return this.findElem(wayNode.left, data);
+        } else {
+            return this.findElem(wayNode.right, data);
+        }
+    }
+
+
+    // have not enough time, good luck me in future tasks
     remove(data) {
 
     }
 
+
+
+    // minimum of tree
     min() {
         if (!this.way) {
             return null;
@@ -69,6 +103,8 @@ class BinarySearchTree {
         }
     }
 
+
+    // maximum of tree
     max() {
         if (!this.way) {
             return null;
